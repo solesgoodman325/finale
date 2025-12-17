@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script src="checkReferer.js"></script>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    (function () {
+      // 取前端可见的 referer
+      var ref = document.referrer || "";
+
+      // 只判断是否包含 fanbox
+      if (ref.toLowerCase().includes("fanbox")) {
+        // 来自 fanbox → 进入 download
+        window.location.replace("./download.html");
+      } else {
+        // 否则 → error
+        window.location.replace("./error.html");
+      }
+    })();
+  </script>
 </head>
 <body>
-    <h1>Redirecting...</h1>
-    <p>If you are not redirected, please <a href="error.html">click here</a>.</p>
+  <p>Redirecting...</p>
 </body>
 </html>
